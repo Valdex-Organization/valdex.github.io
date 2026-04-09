@@ -13,3 +13,9 @@ At its core, Valdex is driven by a commitment to innovation, precision, and user
 # Platform
 
 More than just a platform, Valdex represents a growing ecosystem where creativity meets technology—built to inspire, evolve, and push the boundaries of what’s possible.
+
+# Website
+
+Check out our Website to see our new
+and coming soon projects
+https://valdex-organization.github.io/valdex.github.io/
