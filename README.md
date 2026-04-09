@@ -14,6 +14,10 @@ At its core, Valdex is driven by a commitment to innovation, precision, and user
 
 More than just a platform, Valdex represents a growing ecosystem where creativity meets technology—built to inspire, evolve, and push the boundaries of what’s possible.
 
+# Project Overview
+
+A dark GitHub-themed mods and gaming tools hub called Valdex. Users can browse, discover, and download game mods, scripts, skin packs, and utilities. Features mod cards with ratings and download counts, category browsing, trending leaderboard, and a community upload CTA.
+
 # Website
 
 Check out our Website to see our new
