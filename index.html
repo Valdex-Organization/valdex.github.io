@@ -1,0 +1,1400 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valdex — Mods & Tools Hub</title>
+    <meta name="description" content="Download the best mods, tools, and gaming resources at Valdex." />
+    <link rel="shortcut icon" href="./assets/logo/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            /* === xkimods branding === */
+            --bg:           #080E16;
+            --bg-nav:       rgba(8,14,22,0.94);
+            --bg-card:      #0d1421;
+            --bg-card-hover:#111d2e;
+            --bg-input:     #0b1320;
+            --border:       #182030;
+            --border-hover: #5865F2;
+            --text:         #e2e8f0;
+            --text-sec:     #94A3B8;
+            --text-muted:   #475569;
+            --accent:       #5865F2;
+            --accent-dim:   #4752c4;
+            --accent-glow:  rgba(88, 101, 242, 0.25);
+            --accent-glow2: rgba(88, 101, 242, 0.08);
+            --green:        #22c55e;
+            --yellow:       #f59e0b;
+            --red:          #ef4444;
+            --orange:       #f97316;
+            --purple:       #a855f7;
+            --teal:         #06b6d4;
+            --radius:       12px;
+            --radius-pill:  50px;
+            --shadow-card:  0 4px 24px rgba(0,0,0,0.5);
+            --shadow-accent: rgba(88, 101, 242, 0.3) 0px 4px 15px 0px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 17.6px;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.65;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.2;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* ── BACKGROUND GRADIENTS ── */
+        .bg-radial-hero {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 80% 40% at 20% 0%, rgba(88,101,242,0.14) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 30% at 80% 10%, rgba(168,85,247,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 50% 100%, rgba(88,101,242,0.06) 0%, transparent 70%);
+        }
+
+        /* ── ANNOUNCEMENT BAR ── */
+        .announcement {
+            background: linear-gradient(90deg, rgba(88,101,242,0.18), rgba(168,85,247,0.12), rgba(88,101,242,0.18));
+            border-bottom: 1px solid rgba(88,101,242,0.25);
+            padding: 9px 24px;
+            text-align: center;
+            font-size: 0.82rem;
+            color: var(--text-sec);
+            position: relative;
+            z-index: 10;
+        }
+
+        .announcement strong { color: var(--text); }
+        .announcement a { color: var(--accent); font-weight: 600; }
+        .announcement a:hover { text-decoration: underline; }
+
+        /* ── HEADER ── */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-nav);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 32px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-shrink: 0;
+            text-decoration: none;
+        }
+
+        .header-logo img {
+            height: 30px;
+            width: 30px;
+            object-fit: contain;
+        }
+
+        .header-logo span {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .header-search {
+            flex: 1;
+            max-width: 360px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            padding: 8px 16px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .header-search:focus-within {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-glow2);
+        }
+
+        .header-search input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text);
+            font-size: 0.875rem;
+            width: 100%;
+        }
+
+        .header-search input::placeholder { color: var(--text-muted); }
+        .header-search i { color: var(--text-muted); font-size: 0.9rem; }
+
+        nav.main-nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+        }
+
+        .nav-link {
+            color: var(--text-sec);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 7px 14px;
+            border-radius: var(--radius-pill);
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--text);
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* ── BUTTONS ── */
+        .btn-primary {
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 9px 22px;
+            border-radius: var(--radius-pill);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-accent);
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-dim);
+            transform: translateY(-2px);
+            box-shadow: rgba(88,101,242,0.45) 0px 6px 20px 0px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 8px 22px;
+            border-radius: var(--radius-pill);
+            border: 1px solid #282E5A;
+            cursor: pointer;
+            box-shadow: rgba(0,0,0,0.2) 0px 4px 15px 0px;
+            transition: border-color 0.2s, background 0.2s, transform 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            background: rgba(88,101,242,0.08);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-sec);
+            font-size: 1.4rem;
+            cursor: pointer;
+            margin-left: auto;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            z-index: 1;
+            padding: 100px 32px 72px;
+            text-align: center;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(88,101,242,0.12);
+            border: 1px solid rgba(88,101,242,0.3);
+            border-radius: var(--radius-pill);
+            padding: 6px 18px;
+            font-size: 0.8rem;
+            color: #a5b4fc;
+            font-weight: 500;
+            margin-bottom: 28px;
+            letter-spacing: 0.01em;
+        }
+
+        .hero-badge .dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 .grad {
+            background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 50%, #38bdf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-sec);
+            max-width: 520px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 64px;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--bg-card);
+            overflow: hidden;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            flex: 1;
+            padding: 20px 16px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* ── WRAPPER ── */
+        .page-wrap {
+            position: relative;
+            z-index: 1;
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ── SECTION ── */
+        .section { padding: 64px 0; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 32px;
+            gap: 12px;
+        }
+
+        .section-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            margin-bottom: 6px;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .section-link {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            white-space: nowrap;
+            transition: gap 0.2s;
+        }
+
+        .section-link:hover { gap: 9px; }
+
+        /* ── DIVIDER ── */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+        }
+
+        /* ── MOD CARDS ── */
+        .mods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 18px;
+        }
+
+        .mod-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+        }
+
+        .mod-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(88,101,242,0.2);
+        }
+
+        .mod-thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            position: relative;
+            background: #080e1e;
+        }
+
+        .mod-thumb-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s;
+        }
+
+        .mod-card:hover .mod-thumb-inner { transform: scale(1.05); }
+
+        .mod-thumb-inner i { font-size: 3.2rem; opacity: 0.55; }
+
+        .mod-badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 4px 11px;
+            border-radius: var(--radius-pill);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        .badge-premium { background: linear-gradient(135deg,#d4a017,#f59e0b); color:#000; }
+        .badge-new     { background: linear-gradient(135deg,var(--accent-dim),var(--accent)); color:#fff; }
+        .badge-hot     { background: linear-gradient(135deg,#b91c1c,#ef4444); color:#fff; }
+        .badge-top     { background: linear-gradient(135deg,#7e22ce,#a855f7); color:#fff; }
+
+        .mod-body {
+            padding: 18px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mod-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.3;
+        }
+
+        .mod-desc {
+            font-size: 0.82rem;
+            color: var(--text-sec);
+            line-height: 1.55;
+            flex: 1;
+        }
+
+        .mod-tags {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(88,101,242,0.1);
+            color: #a5b4fc;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(88,101,242,0.2);
+        }
+
+        .mod-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 18px;
+            border-top: 1px solid var(--border);
+            background: rgba(255,255,255,0.015);
+        }
+
+        .mod-rating {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .mod-rating i { color: var(--yellow); }
+        .mod-rating .reviews { font-weight: 400; color: var(--text-muted); font-size: 0.78rem; }
+
+        .mod-downloads {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.82rem;
+            color: var(--text-sec);
+        }
+
+        .mod-downloads i { color: var(--green); }
+
+        /* ── CATEGORIES ── */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 14px;
+        }
+
+        .cat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            transition: border-color 0.2s, background 0.2s, transform 0.2s;
+        }
+
+        .cat-card:hover {
+            border-color: var(--accent);
+            background: var(--bg-card-hover);
+            transform: translateY(-2px);
+        }
+
+        .cat-icon {
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .ci-blue   { background: rgba(88,101,242,0.15); color: #818cf8; }
+        .ci-green  { background: rgba(34,197,94,0.15);  color: var(--green); }
+        .ci-orange { background: rgba(249,115,22,0.15); color: var(--orange); }
+        .ci-purple { background: rgba(168,85,247,0.15); color: var(--purple); }
+        .ci-red    { background: rgba(239,68,68,0.15);  color: var(--red); }
+        .ci-teal   { background: rgba(6,182,212,0.15);  color: var(--teal); }
+        .ci-yellow { background: rgba(245,158,11,0.15); color: var(--yellow); }
+        .ci-pink   { background: rgba(236,72,153,0.15); color: #ec4899; }
+
+        .cat-info { flex: 1; min-width: 0; }
+
+        .cat-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+
+        .cat-count { font-size: 0.78rem; color: var(--text-muted); }
+        .cat-arrow { color: var(--text-muted); font-size: 0.8rem; }
+
+        /* ── BANNER CTA ── */
+        .cta-banner {
+            background: linear-gradient(135deg, #0d1535 0%, #0d1421 50%, #0d1535 100%);
+            border: 1px solid rgba(88,101,242,0.3);
+            border-radius: 20px;
+            padding: 56px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 400px; height: 400px;
+            background: radial-gradient(ellipse, rgba(88,101,242,0.18) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .cta-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -60px; left: -60px;
+            width: 300px; height: 300px;
+            background: radial-gradient(ellipse, rgba(168,85,247,0.1) 0%, transparent 65%);
+            pointer-events: none;
+        }
+
+        .cta-text { max-width: 520px; position: relative; z-index: 1; }
+
+        .cta-text h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .cta-text p {
+            color: var(--text-sec);
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 12px;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── TRENDING ── */
+        .trending-list {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: var(--bg-card);
+        }
+
+        .trend-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .trend-item:last-child { border-bottom: none; }
+        .trend-item:hover { background: var(--bg-card-hover); }
+
+        .trend-rank {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            width: 22px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .trend-rank.gold   { color: #f59e0b; }
+        .trend-rank.silver { color: #94a3b8; }
+        .trend-rank.bronze { color: #cd7c2a; }
+
+        .trend-thumb {
+            width: 60px; height: 42px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #080e1e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .trend-info { flex: 1; min-width: 0; }
+
+        .trend-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 3px;
+        }
+
+        .trend-meta {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            display: flex;
+            gap: 12px;
+        }
+
+        .trend-meta i { color: var(--text-muted); margin-right: 2px; }
+
+        .trend-badge {
+            font-size: 0.72rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: var(--radius-pill);
+            flex-shrink: 0;
+        }
+
+        .tb-up   { background: rgba(34,197,94,0.12);  color: var(--green); }
+        .tb-fire { background: rgba(239,68,68,0.12);  color: var(--red); }
+        .tb-star { background: rgba(245,158,11,0.12); color: var(--yellow); }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--bg-card);
+            border-top: 1px solid var(--border);
+            padding: 56px 32px 28px;
+            margin-top: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand { display: flex; flex-direction: column; gap: 14px; }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-logo img {
+            height: 26px; width: 26px;
+            object-fit: contain;
+        }
+
+        .footer-logo span {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .footer-brand p {
+            font-size: 0.84rem;
+            color: var(--text-sec);
+            line-height: 1.65;
+            max-width: 260px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 10px;
+        }
+
+        .soc-btn {
+            width: 34px; height: 34px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-sec);
+            font-size: 0.9rem;
+            transition: color 0.2s, border-color 0.2s, background 0.2s;
+        }
+
+        .soc-btn:hover {
+            color: var(--text);
+            border-color: var(--accent);
+            background: rgba(88,101,242,0.12);
+        }
+
+        .footer-col h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 16px;
+        }
+
+        .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+
+        .footer-col ul li a {
+            font-size: 0.84rem;
+            color: var(--text-sec);
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover { color: var(--text); }
+
+        .footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-bottom p { font-size: 0.8rem; color: var(--text-muted); }
+        .footer-bottom a { color: var(--text-sec); }
+        .footer-bottom a:hover { color: var(--accent); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            nav.main-nav { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .header-search { max-width: 220px; }
+
+            nav.main-nav.open {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                position: fixed;
+                top: 64px; left: 0; right: 0;
+                background: #080E16;
+                border-bottom: 1px solid var(--border);
+                padding: 20px 28px;
+                gap: 4px;
+                z-index: 99;
+            }
+
+            .hero { padding: 64px 20px 48px; }
+            .hero h1 { font-size: 42px; }
+            .hero-stats { border-radius: var(--radius); flex-wrap: wrap; }
+            .stat-item { min-width: 50%; border-bottom: 1px solid var(--border); }
+            .stat-item:nth-child(odd) { border-right: 1px solid var(--border); }
+            .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+
+            .cta-banner { flex-direction: column; text-align: center; padding: 36px 28px; }
+            .cta-actions { justify-content: center; }
+
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+            .footer-brand { grid-column: 1 / -1; }
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 0 20px; }
+            .header-search { display: none; }
+            .page-wrap { padding: 0 20px; }
+            .hero h1 { font-size: 32px; }
+            .mods-grid { grid-template-columns: 1fr; }
+            .categories-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            footer { padding: 40px 20px 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Fixed bg gradients -->
+<div class="bg-radial-hero"></div>
+
+<!-- Announcement -->
+<div class="announcement" style="position:relative;z-index:10;">
+    <strong>🎉 Valdex 2.0 is live</strong> — faster downloads, new mod browser & Discord integration.
+    <a href="#">What's new →</a>
+</div>
+
+<!-- Header -->
+<header>
+    <a href="#" class="header-logo">
+        <img src="./assets/logo/logo.png" alt="Valdex" />
+        <span>Valdex</span>
+    </a>
+
+    <div class="header-search">
+        <i class="bi bi-search"></i>
+        <input type="text" placeholder="Search mods, games, tools…" />
+    </div>
+
+    <nav class="main-nav" id="main-nav">
+        <a class="nav-link" href="mods.html">Mods</a>
+        <a class="nav-link" href="categories.html">Categories</a>
+        <a class="nav-link" href="#trending">Trending</a>
+        <a class="nav-link" href="#">Docs</a>
+        <a class="btn-secondary" href="categories.html" style="margin-left:8px;">Explore Collection</a>
+        <a class="btn-primary" href="#">
+            <i class="bi bi-discord"></i> Join Discord Server
+        </a>
+    </nav>
+
+    <button class="mobile-menu-btn" id="mob-btn" onclick="toggleNav()" aria-label="menu">
+        <i class="bi bi-list" id="mob-icon"></i>
+    </button>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero-badge">
+        <span class="dot"></span>
+        Trusted by 50,000+ gamers worldwide
+    </div>
+    <h1>
+        The Ultimate<br />
+        <span class="grad">Mods &amp; Tools</span> Hub
+    </h1>
+    <p>Browse, download and manage the best mods, cheats, skins, and gaming tools — all in one dark place, built for gamers.</p>
+    <div class="hero-actions">
+        <a class="btn-primary" href="mods.html">
+            <i class="bi bi-grid-fill"></i> Browse Mods
+        </a>
+        <a class="btn-secondary" href="#">
+            <i class="bi bi-discord"></i> Join Discord Server
+        </a>
+    </div>
+
+    <div class="hero-stats">
+        <div class="stat-item">
+            <div class="stat-value">2,400+</div>
+            <div class="stat-label">Mods</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">1.2M</div>
+            <div class="stat-label">Downloads</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">50K+</div>
+            <div class="stat-label">Active Users</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value">4.8 ★</div>
+            <div class="stat-label">Avg. Rating</div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FEATURED MODS ── -->
+<div class="page-wrap">
+    <hr class="divider" />
+    <section class="section" id="featured">
+        <div class="section-header">
+            <div>
+                <div class="section-eyebrow">Hand-picked</div>
+                <h2 class="section-title">Premium Selections</h2>
+            </div>
+            <a class="section-link" href="mods.html">View all <i class="bi bi-arrow-right"></i></a>
+        </div>
+
+        <div class="mods-grid">
+
+            <!-- 1 -->
+            <div class="mod-card" data-href="mod-gta-sa.html">
+                <div class="mod-thumb">
+                    <div class="mod-thumb-inner" style="background:linear-gradient(135deg,#0a1a0a,#1a2d10);">
+                        <i class="bi bi-controller" style="color:#22c55e;"></i>
+                    </div>
+                    <span class="mod-badge badge-premium">⭐ Premium</span>
+                </div>
+                <div class="mod-body">
+                    <div class="mod-title">GTA SA Android 15 64Bit</div>
+                    <div class="mod-desc">Full modded GTA San Andreas for Android 15 with 64-bit support, ultra graphics pack, and anti-ban protection built in.</div>
+                    <div class="mod-tags">
+                        <span class="tag">Android</span>
+                        <span class="tag">GTA</span>
+                        <span class="tag">64bit</span>
+                    </div>
+                </div>
+                <div class="mod-footer">
+                    <div class="mod-rating">
+                        <i class="bi bi-star-fill"></i> 4.3
+                        <span class="reviews">(1.2k)</span>
+                    </div>
+                    <div class="mod-downloads"><i class="bi bi-download"></i> 5,006</div>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="mod-card" data-href="mod-minecraft-pe.html">
+                <div class="mod-thumb">
+                    <div class="mod-thumb-inner" style="background:linear-gradient(135deg,#0a0e24,#131a3a);">
+                        <i class="bi bi-joystick" style="color:#818cf8;"></i>
+                    </div>
+                    <span class="mod-badge badge-new">🆕 New</span>
+                </div>
+                <div class="mod-body">
+                    <div class="mod-title">Minecraft PE Ultra Mod Pack v2</div>
+                    <div class="mod-desc">Massive mod pack for Minecraft PE — shaders, new biomes, weapons, and 200+ texture changes included.</div>
+                    <div class="mod-tags">
+                        <span class="tag">Minecraft</span>
+                        <span class="tag">PE</span>
+                        <span class="tag">Shaders</span>
+                    </div>
+                </div>
+                <div class="mod-footer">
+                    <div class="mod-rating"><i class="bi bi-star-fill"></i> 4.7 <span class="reviews">(3.4k)</span></div>
+                    <div class="mod-downloads"><i class="bi bi-download"></i> 12,330</div>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="mod-card" data-href="mod-freefire.html">
+                <div class="mod-thumb">
+                    <div class="mod-thumb-inner" style="background:linear-gradient(135deg,#1a0808,#2d0f0f);">
+                        <i class="bi bi-fire" style="color:#ef4444;"></i>
+                    </div>
+                    <span class="mod-badge badge-hot">🔥 Hot</span>
+                </div>
+                <div class="mod-body">
+                    <div class="mod-title">Free Fire OB Hack Tool 2025</div>
+                    <div class="mod-desc">Advanced Free Fire mod with aimbot assist, wall-check, and a custom HUD skin pack for all Android devices.</div>
+                    <div class="mod-tags">
+                        <span class="tag">FreeFire</span>
+                        <span class="tag">Tools</span>
+                        <span class="tag">Skin</span>
+                    </div>
+                </div>
+                <div class="mod-footer">
+                    <div class="mod-rating"><i class="bi bi-star-fill"></i> 4.1 <span class="reviews">(890)</span></div>
+                    <div class="mod-downloads"><i class="bi bi-download"></i> 8,742</div>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="mod-card" data-href="mod-mlbb.html">
+                <div class="mod-thumb">
+                    <div class="mod-thumb-inner" style="background:linear-gradient(135deg,#130a22,#1e1040);">
+                        <i class="bi bi-gem" style="color:#a855f7;"></i>
+                    </div>
+                    <span class="mod-badge badge-top">👑 Top</span>
+                </div>
+                <div class="mod-body">
+                    <div class="mod-title">Mobile Legends Skin Injector Pro</div>
+                    <div class="mod-desc">Unlock all hero skins, recall effects, and custom emotes. Safe, undetected, and updated every week.</div>
+                    <div class="mod-tags">
+                        <span class="tag">MLBB</span>
+                        <span class="tag">Skins</span>
+                        <span class="tag">Injector</span>
+                    </div>
+                </div>
+                <div class="mod-footer">
+                    <div class="mod-rating"><i class="bi bi-star-fill"></i> 4.5 <span class="reviews">(2.1k)</span></div>
+                    <div class="mod-downloads"><i class="bi bi-download"></i> 19,500</div>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="mod-card" data-href="mod-pubg.html">
+                <div class="mod-thumb">
+                    <div class="mod-thumb-inner" style="background:linear-gradient(135deg,#081a12,#0f2a1c);">
+                        <i class="bi bi-phone" style="color:#22c55e;"></i>
+                    </div>
+                    <span class="mod-badge badge-new">🆕 New</span>
+                </div>
+                <div class="mod-body">
+                    <div class="mod-title">PUBG Mobile Mod Menu v3.4</div>
+                    <div class="mod-desc">All-in-one mod menu for PUBG Mobile — speed, no recoil, radar hack, and aimbot for Season 2025.</div>
+                    <div class="mod-tags">
+                        <span class="tag">PUBG</span>
+                        <span class="tag">Mobile</span>
+                        <span class="tag">Menu</span>
+                    </div>
+                </div>
+                <div class="mod-footer">
+                    <div class="mod-rating"><i class="bi bi-star-fill"></i> 4.6 <span class="reviews">(4.7k)</span></div>
+                    <div class="mod-downloads"><i class="bi bi-download"></i> 31,200</div>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="mod-card" data-href="mod-roblox.html">
+                <div class="mod-thumb">
+                    <div class="mod-thumb-inner" style="background:linear-gradient(135deg,#1a1208,#2a1d0a);">
+                        <i class="bi bi-tools" style="color:#f59e0b;"></i>
+                    </div>
+                    <span class="mod-badge badge-hot">🔥 Hot</span>
+                </div>
+                <div class="mod-body">
+                    <div class="mod-title">Roblox Executor Script Hub</div>
+                    <div class="mod-desc">Powerful Lua script executor for Roblox with 500+ pre-loaded scripts, auto-update and GUI builder.</div>
+                    <div class="mod-tags">
+                        <span class="tag">Roblox</span>
+                        <span class="tag">Scripts</span>
+                        <span class="tag">Executor</span>
+                    </div>
+                </div>
+                <div class="mod-footer">
+                    <div class="mod-rating"><i class="bi bi-star-fill"></i> 4.4 <span class="reviews">(6.2k)</span></div>
+                    <div class="mod-downloads"><i class="bi bi-download"></i> 44,800</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <hr class="divider" />
+
+    <!-- ── CATEGORIES ── -->
+    <section class="section" id="categories">
+        <div class="section-header">
+            <div>
+                <div class="section-eyebrow">Explore</div>
+                <h2 class="section-title">Browse Categories</h2>
+            </div>
+            <a class="section-link" href="categories.html">All categories <i class="bi bi-arrow-right"></i></a>
+        </div>
+
+        <div class="categories-grid">
+            <div class="cat-card">
+                <div class="cat-icon ci-blue"><i class="bi bi-controller"></i></div>
+                <div class="cat-info">
+                    <div class="cat-name">Game Mods</div>
+                    <div class="cat-count">1,240 mods</div>
+                </div>
+                <i class="bi bi-chevron-right cat-arrow"></i>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon ci-green"><i class="bi bi-phone"></i></div>
+                <div class="cat-info">
+                    <div class="cat-name">Mobile Apps</div>
+                    <div class="cat-count">380 tools</div>
+                </div>
+                <i class="bi bi-chevron-right cat-arrow"></i>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon ci-orange"><i class="bi bi-palette-fill"></i></div>
+                <div class="cat-info">
+                    <div class="cat-name">Skin Packs</div>
+                    <div class="cat-count">620 skins</div>
+                </div>
+                <i class="bi bi-chevron-right cat-arrow"></i>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon ci-purple"><i class="bi bi-code-slash"></i></div>
+                <div class="cat-info">
+                    <div class="cat-name">Scripts</div>
+                    <div class="cat-count">510 scripts</div>
+                </div>
+                <i class="bi bi-chevron-right cat-arrow"></i>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon ci-red"><i class="bi bi-shield-fill"></i></div>
+                <div class="cat-info">
+                    <div class="cat-name">Anti-Ban Tools</div>
+                    <div class="cat-count">90 tools</div>
+                </div>
+                <i class="bi bi-chevron-right cat-arrow"></i>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon ci-teal"><i class="bi bi-music-note-beamed"></i></div>
+                <div class="cat-info">
+                    <div class="cat-name">Audio Mods</div>
+                    <div class="cat-count">175 packs</div>
+                </div>
+                <i class="bi bi-chevron-right cat-arrow"></i>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon ci-yellow"><i class="bi bi-cpu-fill"></i></div>
+                <div class="cat-info">
+                    <div class="cat-name">PC Utilities</div>
+                    <div class="cat-count">230 utils</div>
+                </div>
+                <i class="bi bi-chevron-right cat-arrow"></i>
+            </div>
+            <div class="cat-card">
+                <div class="cat-icon ci-pink"><i class="bi bi-map-fill"></i></div>
+                <div class="cat-info">
+                    <div class="cat-name">Maps &amp; Worlds</div>
+                    <div class="cat-count">340 maps</div>
+                </div>
+                <i class="bi bi-chevron-right cat-arrow"></i>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider" />
+</div>
+
+<!-- ── CTA BANNER (full width) ── -->
+<div style="padding: 64px 32px; position:relative; z-index:1;">
+    <div style="max-width:1240px; margin:0 auto;">
+        <div class="cta-banner">
+            <div class="cta-text">
+                <h2>Upload Your Own Mod &mdash; Join the Community</h2>
+                <p>Share your creations with 50,000+ gamers. Get ratings, downloads, and feedback from the Valdex community. Publishing is free and always will be.</p>
+            </div>
+            <div class="cta-actions">
+                <a class="btn-primary" href="#">
+                    <i class="bi bi-upload"></i> Publish Mod
+                </a>
+                <a class="btn-secondary" href="#">Learn More</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ── TRENDING ── -->
+<div class="page-wrap">
+    <section class="section" id="trending">
+        <div class="section-header">
+            <div>
+                <div class="section-eyebrow">Leaderboard</div>
+                <h2 class="section-title">Trending This Week</h2>
+            </div>
+            <a class="section-link" href="#">Full leaderboard <i class="bi bi-arrow-right"></i></a>
+        </div>
+
+        <div class="trending-list">
+
+            <div class="trend-item">
+                <span class="trend-rank gold">1</span>
+                <div class="trend-thumb" style="background:linear-gradient(135deg,#0a1a0a,#1a2d10);">
+                    <i class="bi bi-controller" style="color:#22c55e; opacity:.7;"></i>
+                </div>
+                <div class="trend-info">
+                    <div class="trend-name">GTA SA Android 15 64Bit</div>
+                    <div class="trend-meta">
+                        <span><i class="bi bi-download"></i> 5,006</span>
+                        <span><i class="bi bi-star-fill" style="color:#f59e0b;"></i> 4.3</span>
+                        <span>Android · GTA</span>
+                    </div>
+                </div>
+                <span class="trend-badge tb-up">↑ +12%</span>
+            </div>
+
+            <div class="trend-item">
+                <span class="trend-rank gold">2</span>
+                <div class="trend-thumb" style="background:linear-gradient(135deg,#130a22,#1e1040);">
+                    <i class="bi bi-gem" style="color:#a855f7; opacity:.7;"></i>
+                </div>
+                <div class="trend-info">
+                    <div class="trend-name">Mobile Legends Skin Injector Pro</div>
+                    <div class="trend-meta">
+                        <span><i class="bi bi-download"></i> 19,500</span>
+                        <span><i class="bi bi-star-fill" style="color:#f59e0b;"></i> 4.5</span>
+                        <span>MLBB · Skins</span>
+                    </div>
+                </div>
+                <span class="trend-badge tb-fire">🔥 Viral</span>
+            </div>
+
+            <div class="trend-item">
+                <span class="trend-rank silver">3</span>
+                <div class="trend-thumb" style="background:linear-gradient(135deg,#1a1208,#2a1d0a);">
+                    <i class="bi bi-tools" style="color:#f59e0b; opacity:.7;"></i>
+                </div>
+                <div class="trend-info">
+                    <div class="trend-name">Roblox Executor Script Hub</div>
+                    <div class="trend-meta">
+                        <span><i class="bi bi-download"></i> 44,800</span>
+                        <span><i class="bi bi-star-fill" style="color:#f59e0b;"></i> 4.4</span>
+                        <span>Roblox · Scripts</span>
+                    </div>
+                </div>
+                <span class="trend-badge tb-star">⭐ Top Rated</span>
+            </div>
+
+            <div class="trend-item">
+                <span class="trend-rank bronze">4</span>
+                <div class="trend-thumb" style="background:linear-gradient(135deg,#081a12,#0f2a1c);">
+                    <i class="bi bi-phone" style="color:#22c55e; opacity:.7;"></i>
+                </div>
+                <div class="trend-info">
+                    <div class="trend-name">PUBG Mobile Mod Menu v3.4</div>
+                    <div class="trend-meta">
+                        <span><i class="bi bi-download"></i> 31,200</span>
+                        <span><i class="bi bi-star-fill" style="color:#f59e0b;"></i> 4.6</span>
+                        <span>PUBG · Mobile</span>
+                    </div>
+                </div>
+                <span class="trend-badge tb-up">↑ +28%</span>
+            </div>
+
+            <div class="trend-item">
+                <span class="trend-rank" style="color:var(--text-muted);">5</span>
+                <div class="trend-thumb" style="background:linear-gradient(135deg,#0a0e24,#131a3a);">
+                    <i class="bi bi-joystick" style="color:#818cf8; opacity:.7;"></i>
+                </div>
+                <div class="trend-info">
+                    <div class="trend-name">Minecraft PE Ultra Mod Pack v2</div>
+                    <div class="trend-meta">
+                        <span><i class="bi bi-download"></i> 12,330</span>
+                        <span><i class="bi bi-star-fill" style="color:#f59e0b;"></i> 4.7</span>
+                        <span>Minecraft · PE</span>
+                    </div>
+                </div>
+                <span class="trend-badge tb-star">⭐ Top Rated</span>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="footer-logo">
+                    <img src="./assets/logo/logo.png" alt="Valdex" />
+                    <span>Valdex</span>
+                </a>
+                <p>The ultimate dark-themed hub for game mods, tools, scripts, and skins. Built by gamers, for gamers.</p>
+                <div class="footer-socials">
+                    <a href="#" class="soc-btn" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                    <a href="#" class="soc-btn" aria-label="Discord"><i class="bi bi-discord"></i></a>
+                    <a href="#" class="soc-btn" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" class="soc-btn" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Browse</h4>
+                <ul>
+                    <li><a href="#">Game Mods</a></li>
+                    <li><a href="#">Mobile Apps</a></li>
+                    <li><a href="#">Scripts</a></li>
+                    <li><a href="#">Skin Packs</a></li>
+                    <li><a href="#">New Releases</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="#">Discord Server</a></li>
+                    <li><a href="#">Forums</a></li>
+                    <li><a href="#">Submit a Mod</a></li>
+                    <li><a href="#">Leaderboard</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Valdex</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">DMCA</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 Valdex. All rights reserved. Built with ❤️ for gamers.</p>
+            <p><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">DMCA</a></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function toggleNav() {
+        const nav = document.getElementById('main-nav');
+        const icon = document.getElementById('mob-icon');
+        nav.classList.toggle('open');
+        icon.className = nav.classList.contains('open') ? 'bi bi-x-lg' : 'bi bi-list';
+    }
+
+    document.querySelectorAll('.mod-card').forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', () => {
+            location.href = card.dataset.href || 'mods.html';
+        });
+    });
+
+    document.querySelectorAll('.cat-card').forEach(card => {
+        card.addEventListener('click', () => { location.href = 'categories.html'; });
+    });
+
+    document.querySelectorAll('.trend-item').forEach(item => {
+        item.addEventListener('click', () => { location.href = 'mods.html'; });
+    });
+</script>
+</body>
+</html>

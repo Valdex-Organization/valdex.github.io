@@ -1,0 +1,131 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    {
+      "family": "Inter",
+      "role": "body"
+    },
+    {
+      "family": "Outfit",
+      "role": "heading"
+    }
+  ],
+  "colors": {
+    "primary": "#090F21",
+    "secondary": "#94A3B8",
+    "accent": "#5865F2",
+    "background": "#020617",
+    "textPrimary": "#020617",
+    "link": "#020617"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Inter",
+      "heading": "Outfit"
+    },
+    "fontStacks": {
+      "heading": [
+        "Outfit",
+        "sans-serif"
+      ],
+      "body": [
+        "Inter",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Inter",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "64px",
+      "h2": "48px",
+      "body": "17.6px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "12px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#5865F2",
+      "textColor": "#FFFFFF",
+      "borderRadius": "50px",
+      "borderRadiusCorners": {
+        "topLeft": "50px",
+        "topRight": "50px",
+        "bottomRight": "50px",
+        "bottomLeft": "50px"
+      },
+      "shadow": "rgba(88, 101, 242, 0.3) 0px 4px 15px 0px"
+    },
+    "buttonSecondary": {
+      "background": "transparent",
+      "textColor": "#FFFFFF",
+      "borderColor": "#282E5A",
+      "borderRadius": "50px",
+      "borderRadiusCorners": {
+        "topLeft": "50px",
+        "topRight": "50px",
+        "bottomRight": "50px",
+        "bottomLeft": "50px"
+      },
+      "shadow": "rgba(0, 0, 0, 0.2) 0px 4px 15px 0px"
+    }
+  },
+  "images": {
+    "favicon": "https://xkimods.my.id/favicon.png",
+    "ogImage": null
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": -1,
+    "reasoning": "Neither logo candidate is suitable as the main brand logo for 'xkimods'. Both are located in the body and do not match the brand inferred from the page title and URL.",
+    "confidence": 0.3,
+    "rejected": true,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 1,
+      "text": "Join Discord Server",
+      "reasoning": "Button #2 has a vibrant blue background (#5865F2), which stands out as the primary call-to-action color. The text 'Join Discord Server' is action-oriented, making it a strong candidate for the primary CTA."
+    },
+    "secondary": {
+      "index": 0,
+      "text": "Explore Collection",
+      "reasoning": "Button #1 has a transparent background, making it a suitable secondary button. It contrasts with the primary button's vibrant color and offers a less prominent action with 'Explore Collection'."
+    },
+    "confidence": 0.95
+  },
+  "personality": {
+    "tone": "modern",
+    "energy": "medium",
+    "targetAudience": "gamers and mod enthusiasts"
+  },
+  "designSystem": {
+    "framework": "custom",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.95,
+    "colors": 0.9,
+    "overall": 0.925
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": -1,
+        "selectedLogoReasoning": "Neither logo candidate is suitable as the main brand logo for 'xkimods'. Both are located in the body and do not match the brand inferred from the page title and URL.",
+        "confidence": 0.3
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}

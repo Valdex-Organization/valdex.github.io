@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roblox Executor Script Hub — Valdex</title>
+    <link rel="shortcut icon" href="./assets/logo/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="mod-style.css" />
+</head>
+<body>
+<div class="bg-radial"></div>
+<header>
+    <a href="index.html" class="header-logo"><img src="./assets/logo/logo.png" alt="Valdex" /><span>Valdex</span></a>
+    <div class="header-search"><i class="bi bi-search"></i><input type="text" placeholder="Search mods, games, tools…" /></div>
+    <nav class="main-nav" id="main-nav">
+        <a class="nav-link" href="mods.html">Mods</a><a class="nav-link" href="categories.html">Categories</a>
+        <a class="nav-link" href="index.html#trending">Trending</a><a class="nav-link" href="#">Docs</a>
+        <a class="btn-secondary" href="categories.html" style="margin-left:8px;">Explore Collection</a>
+        <a class="btn-primary" href="#"><i class="bi bi-discord"></i> Join Discord Server</a>
+    </nav>
+    <button class="mobile-menu-btn" id="mob-btn" onclick="toggleNav()" aria-label="menu"><i class="bi bi-list" id="mob-icon"></i></button>
+</header>
+<div class="page-wrap">
+    <div class="breadcrumb"><a href="index.html">Home</a><i class="bi bi-chevron-right"></i><a href="mods.html">Mods</a><i class="bi bi-chevron-right"></i><span>Roblox Executor Script Hub</span></div>
+    <div class="mod-hero">
+        <div class="mod-hero-icon" style="background:linear-gradient(135deg,#1a1208,#2a1d0a);"><i class="bi bi-tools" style="color:#f59e0b;"></i></div>
+        <div class="mod-hero-info">
+            <div class="mod-hero-badges"><span class="badge-pill badge-hot">🔥 Hot</span><span class="badge-pill badge-verified"><i class="bi bi-patch-check-fill"></i> Verified Safe</span></div>
+            <h1>Roblox Executor Script Hub</h1>
+            <p class="mod-hero-desc">Powerful Lua script executor for Roblox with 500+ pre-loaded scripts, auto-update, GUI builder, and support for all major Roblox games. The most complete executor available.</p>
+            <div class="mod-hero-tags"><span class="tag">Roblox</span><span class="tag">Scripts</span><span class="tag">Executor</span><span class="tag">Lua</span></div>
+            <div class="mod-hero-actions">
+                <a href="#" class="btn-primary btn-lg"><i class="bi bi-download"></i> Download Now</a>
+                <button class="btn-secondary btn-icon"><i class="bi bi-share"></i></button>
+                <button class="btn-secondary btn-icon"><i class="bi bi-bookmark"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="mod-stats-bar">
+        <div class="stat-pill"><i class="bi bi-star-fill" style="color:#f59e0b;"></i><span><strong>4.4</strong> Rating</span></div>
+        <div class="stat-pill"><i class="bi bi-chat-dots" style="color:#818cf8;"></i><span><strong>6,200</strong> Reviews</span></div>
+        <div class="stat-pill"><i class="bi bi-download" style="color:#22c55e;"></i><span><strong>44,800</strong> Downloads</span></div>
+        <div class="stat-pill"><i class="bi bi-hdd" style="color:#38bdf8;"></i><span><strong>28 MB</strong> Size</span></div>
+        <div class="stat-pill"><i class="bi bi-windows" style="color:#38bdf8;"></i><span><strong>Windows 10+</strong></span></div>
+        <div class="stat-pill"><i class="bi bi-clock" style="color:#f97316;"></i><span><strong>Updated</strong> Apr 2025</span></div>
+    </div>
+    <div class="mod-layout">
+        <div class="mod-main">
+            <div class="content-card"><h2>About This Mod</h2><p>The Roblox Executor Script Hub is the most powerful Lua executor for Roblox on PC. It comes with 500+ pre-loaded scripts for popular games like Blox Fruits, Arsenal, Pet Simulator X, and more.</p><p>Features an in-app GUI builder so you can create your own scripts, plus auto-update ensures you always have the latest exploits.</p></div>
+            <div class="content-card"><h2>Features</h2><ul class="feature-list">
+                <li><i class="bi bi-check-circle-fill" style="color:#22c55e;"></i> 500+ pre-loaded game scripts</li>
+                <li><i class="bi bi-check-circle-fill" style="color:#22c55e;"></i> Custom GUI builder</li>
+                <li><i class="bi bi-check-circle-fill" style="color:#22c55e;"></i> Auto-update system</li>
+                <li><i class="bi bi-check-circle-fill" style="color:#22c55e;"></i> Script hub with searchable library</li>
+                <li><i class="bi bi-check-circle-fill" style="color:#22c55e;"></i> Full Lua 5.1 + Luau support</li>
+                <li><i class="bi bi-check-circle-fill" style="color:#22c55e;"></i> Multi-instance support</li>
+                <li><i class="bi bi-check-circle-fill" style="color:#22c55e;"></i> Lightweight — under 30MB</li>
+            </ul></div>
+            <div class="content-card"><h2>How to Install</h2><ol class="step-list">
+                <li><span class="step-num">1</span> Download the executor EXE installer.</li>
+                <li><span class="step-num">2</span> Disable antivirus temporarily (false positive warning).</li>
+                <li><span class="step-num">3</span> Run the installer and follow the setup wizard.</li>
+                <li><span class="step-num">4</span> Launch Roblox and then open the executor.</li>
+                <li><span class="step-num">5</span> Click "Attach", paste or select a script, and execute!</li>
+            </ol></div>
+        </div>
+        <div class="mod-sidebar">
+            <div class="sidebar-card"><h3>Mod Info</h3>
+                <div class="info-row"><span>Version</span><strong>v8.1 Hub</strong></div>
+                <div class="info-row"><span>Game</span><strong>Roblox</strong></div>
+                <div class="info-row"><span>Platform</span><strong>Windows</strong></div>
+                <div class="info-row"><span>Size</span><strong>28 MB</strong></div>
+                <div class="info-row"><span>Requires</span><strong>Windows 10+</strong></div>
+                <div class="info-row"><span>Updated</span><strong>April 2025</strong></div>
+            </div>
+            <div class="sidebar-card"><h3>Rating Breakdown</h3>
+                <div class="rating-big">4.4 <span>/ 5</span></div>
+                <div class="rating-bar-row"><span>5 ★</span><div class="rating-bar"><div style="width:58%;background:#22c55e;"></div></div><span>58%</span></div>
+                <div class="rating-bar-row"><span>4 ★</span><div class="rating-bar"><div style="width:24%;background:#86efac;"></div></div><span>24%</span></div>
+                <div class="rating-bar-row"><span>3 ★</span><div class="rating-bar"><div style="width:10%;background:#fbbf24;"></div></div><span>10%</span></div>
+                <div class="rating-bar-row"><span>2 ★</span><div class="rating-bar"><div style="width:5%;background:#f97316;"></div></div><span>5%</span></div>
+                <div class="rating-bar-row"><span>1 ★</span><div class="rating-bar"><div style="width:3%;background:#ef4444;"></div></div><span>3%</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="related-section"><h2 class="related-title">Similar Mods</h2><div class="related-grid">
+        <a href="mod-minecraft-pe.html" class="rel-card"><div class="rel-thumb" style="background:linear-gradient(135deg,#0a0e24,#131a3a);"><i class="bi bi-joystick" style="color:#818cf8;"></i></div><div class="rel-info"><div class="rel-name">Minecraft PE Ultra Mod Pack v2</div><div class="rel-meta"><i class="bi bi-star-fill"></i> 4.7 · 12,330 downloads</div></div></a>
+        <a href="mod-valorant.html" class="rel-card"><div class="rel-thumb" style="background:linear-gradient(135deg,#1e0a10,#300f1a);"><i class="bi bi-palette-fill" style="color:#ec4899;"></i></div><div class="rel-info"><div class="rel-name">Valorant PC Skin Changer 2025</div><div class="rel-meta"><i class="bi bi-star-fill"></i> 4.8 · 27,400 downloads</div></div></a>
+        <a href="mod-gta-sa.html" class="rel-card"><div class="rel-thumb" style="background:linear-gradient(135deg,#0a1a0a,#1a2d10);"><i class="bi bi-controller" style="color:#22c55e;"></i></div><div class="rel-info"><div class="rel-name">GTA SA Android 15 64Bit</div><div class="rel-meta"><i class="bi bi-star-fill"></i> 4.3 · 5,006 downloads</div></div></a>
+    </div></div>
+</div>
+<footer><div class="footer-inner"><a href="index.html" class="footer-logo"><img src="./assets/logo/logo.png" alt="Valdex" /> Valdex</a><div class="footer-links"><a href="mods.html">Mods</a><a href="categories.html">Categories</a><a href="#">Discord</a><a href="#">Privacy</a><a href="#">Terms</a></div><p class="footer-copy">© 2025 Valdex. All rights reserved.</p></div></footer>
+<script src="mod-script.js"></script>
+</body></html>
