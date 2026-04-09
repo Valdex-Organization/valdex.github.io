@@ -18,4 +18,5 @@ More than just a platform, Valdex represents a growing ecosystem where creativit
 
 Check out our Website to see our new
 and coming soon projects
+
 https://valdex-organization.github.io/valdex.github.io/
